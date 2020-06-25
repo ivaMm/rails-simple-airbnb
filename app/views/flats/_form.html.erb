@@ -1,0 +1,13 @@
+<%= simple_form_for(flat) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :picture_url %>
+  <%= f.input :description %>
+  <%= f.input :number_of_guests %>
+  <%= f.input :price_per_night %>
+  <% if flat.persisted? %>
+    <%= f.submit value="Edit" %>
+  <% else %>
+    <%= f.submit value="Add" %>
+  <% end %>
+<% end %>

@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+4.times do
+  Flat.create(
+    name: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
+    address: Faker::Address.street_address,
+    description: Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4),
+  	price_per_night: (50..200).to_a.sample,
+  	number_of_guests: (1..5).to_a.sample,
+    picture_url: Faker::LoremPixel.image(size: "350x200", is_gray: false, category: 'city')
+  	)
+end

@@ -1,0 +1,17 @@
+<div class="container">
+   <div class="row justify-content-sm-center">
+    <div class="card">
+      <% @flats.each do |flat| %>
+        <img src="<%= flat.picture_url %>" >
+        <h3><%= flat.name %></h3>
+        <p><%= flat.address %></p>
+        <p>🧑‍🤝‍🧑 <%= flat.number_of_guests %> € <%= flat.price_per_night %></p>
+        <p>
+        <%= link_to "More info", flat_path(flat) %>
+        <%= link_to "Edit", edit_flat_path(flat) %>
+        <%= link_to "Delete", flat_path(flat), method: :delete, data: {confirm: "Are you sure?" }  %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>
