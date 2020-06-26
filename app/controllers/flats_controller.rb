@@ -1,7 +1,12 @@
 class FlatsController < ApplicationController
  before_action :set_flat, only: [:show, :edit, :update, :destroy]
  def index
-   @flats = Flat.all
+   if params[:search].present?
+      @query = params[:search]
+      @flats = Flat.search(params[:search]).order("created_at DESC")
+    else
+      @flats = Flat.all
+    end
  end
 
  def show
@@ -24,19 +29,22 @@ class FlatsController < ApplicationController
  end
 
  def update
-   @flat.update(flat_params)
-   redirect_to flat_path(@flat)
+   if @flat.update(flat_params)
+     redirect_to flat_path(@flat)
+   else
+     render :edit
+   end
  end
 
  def destroy
-    @flat.destroy
-    redirect_to flat_path
+   @flat.destroy
+   redirect_to flat_path
  end
 
  private
 
  def set_flat
-    @flat = Flat.find(params[:id])
+   @flat = Flat.find(params[:id])
  end
 
  def flat_params

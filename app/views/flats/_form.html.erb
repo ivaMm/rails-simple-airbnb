@@ -6,8 +6,8 @@
   <%= f.input :number_of_guests %>
   <%= f.input :price_per_night %>
   <% if flat.persisted? %>
-    <%= f.submit value="Edit" %>
+    <%= f.submit value="Edit", class: "btn btn-outline-success" %>
   <% else %>
-    <%= f.submit value="Add" %>
+    <%= f.submit value="Add", class: "btn btn-outline-primary" %>
   <% end %>
 <% end %>
